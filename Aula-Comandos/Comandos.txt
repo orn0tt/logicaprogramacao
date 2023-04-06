@@ -1,0 +1,57 @@
+Comandos git
+git init -> inicia o repositório
+git init --bare -> inicia um repositório vazio
+git add <nome arquivo> -> adiciona o arquivo específico
+git add . -> adiciona todos os arquivos
+git config --global user.name "Nome do usuario" -> configura o nome do usuario
+git config --global user.email "email" ->configura o email
+git log -> mostra histórico dos commits
+git log --online ->exibe todos os commits, sendo que cada um ocupa uma linha
+git log -p -> exibe as informações mais as alterações que foram feitas
+--------------------------------------------
+criando gitignore
+
+gerar arquivo .gitignore
+colocar nome do arquivo que deseja ignorar
+se for pasta -> pasta/
+ 
+--------------------------------------------
+git init --bare -> esse parâmetro indica que o repositório é puro,
+só contem as alterações dos arquivos
+
+git remote add nomeRepositorio URL -> vincula a um repositorio
+git remote -v -> verifica o endereço do repositorio
+git clone URL -> clona o repositório
+git push nomeRepositorio nomeBranch -> envia os arquivos para o servidor
+git pull -> puxa os arquivos do repositório que está vinculado
+git status -> mostra o status da árvore de trabalho
+git branch nomeBranch -> cria uma branch
+git checkout nomeBranc -> troca para a branch
+git checkout -b nomeBranch -> cria uma branch e troca para ela
+git checkout --nomeArquivo -> descarta as alterações antes de adicionar pra commit
+git merge nomeBranch -> cria um commit de merge
+git log --graph -> são exibidas linhas específicas representando o desenvolvimento
+git rebase nomeBranch -> o git pegará os commits da branch, atualizando a master
+git checkout -- nomeArquivo -> desfaz as alterações que foram feitas e não foram commitadas
+git reset HEAD nomeDoArquivo -> remove os arquivos que foram adicionados pra commit-> git add
+git revert hashDoCommit -> desfaz o commit que foi feito
+git stash ->salva alterações para um local temporario sem gerar um commit
+git stash list -> mostra a lista de tudo que está salvo
+git stash apply posiçãoDaLista -> pega o que está salvo mas logo em seguida é necessário fazer o git stash drop posiçaoDaLista
+git stash pop ->pega a ultima alteração adicionada na stash e remove e ja realiza o merge com as alterações que estavam salvas lá
+git diff hashAPartirDe..hashUltimoCommit -> (..)- indica até -> com esse comando permite ver todas as alterações do commit inicial até o commit final
+git diff -> mostra tudo o que foi alterado mas ainda não foi commitado
+git tag -a nomeTag(v1.0.0) -m "mensagem" -> gera uma Tag a partir daquele commit
+-------------------------------------------------------------------------
+Unindo commits
+git rebase -i HEAD~n ( n número de commits que quero unir ou copiar e colar manualmente o commit imediatamente anterior ao primeiro com o qual queremos trabalhar)
+Para fazermos isto, substituiremos os pick por s, de squash, juntar, apertando:
+pick 971dba0 Trocando UL por DL
+s 3db095f Separando os títulos
+s af37cf6 Quebras de linha
+
+Com isso, os três commits se tornarão um só, o único que possui pick.
+---------------------------------------------------------------------------------
+git cherry-pick hashDoCommit -> traz o commit de uma outra branch para a branch em que esta trabalhando
+git blame nomeArquivo -> mostra responsável por cada linha
+git show {hash} -> mostra todas as alterações aplicadas pelo commit com o hash informado.
